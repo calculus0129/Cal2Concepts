@@ -1,0 +1,346 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+\chapter{Vectors and the Geometry of Space}
+
+\intro{
+In this chapter, we introduce vectors and coordinate systems for three-dimensional space. This will be the setting for our study of the calculus of curves in space and of functions of two variables (whose graphs are surfaces in space) in Chapters 13-16. Here we will also see that vectors provide particularly simple descriptions of lines and planes in space.
+}
+
+\section{Three-Dimensional Coordinate Systems}
+
+To locate a point in a plane, we need two numbers. We know that any point in the plane can be represented as an ordered pair (a, b) of real numbers, where a is the x-x-coordinate and b is the y-coordinate. For this reason, a plane is called two-dimensional. To locate a point in space, three numbers are required. We represent any point in space by an ordered triple (a, b, c) of real numbers.
+
+\subsection{3D Space}
+
+To represent points in space, we first choose a fixed point O (the origin) and three directed lines through O that are perpendicular to each other, called the \textbf{coordinate axes}, labeled the x-axis, y-axis, and z-axis. The direction of the z-axis is determined by the \textbf{right-hand rule} as illustrated in some figure (): If you curl the fingers of your right hand around the z-axis in the direction of a 90$^\circ$ counterclockwise rotation from the positive x-axis to the positive y-axis, then your thumb points in the positive direction of the z-axis.
+
+Every point P in space is represented as a triple (a, b, c) of \textbf{coordinates}: From the origin, we locate P by moving a units along the x-axis, b units parallel to the y-axis, and finally c units parallel to the z-axis (as in Figure).
+
+Given the three coordinate axes, we could determine the followings:
+
+\begin{itemize}
+    \item coordinate planes
+        \subitem xy-plane: The plane that contains the x- and y-axes;
+        \subitem yz-plane: The plane that contains the y- and z-axes;
+        \subitem xz-plane: The plane that contains the x- and z-axes;
+    \item Octants: The eight parts of space divided by the position relative to the three coordinate planes
+        \item The first octant: The region of points whose x-, y-, and z-coordinates are all greater than 0.
+\end{itemize}
+
+\textbf{Projection} of a point P to a plane S: The point Q in S s.t. the line segment PQ is perpendicular to S.
+
+Every points are represented in terms of 3-tuples of reals. The representative Cartesian product $\mathbb{R}^3 = \mathbb{R}\times\mathbb{R}\times\mathbb{R} = \{(a, b, c) | a,b,c\in\mathbb{R}\}$ is also known as the \textbf{three-dimensional rectangular coordinate system}.
+
+\subsection{Surfaces and Solids}
+
+A first-degree equation involving x and y in the xy-plane represents a line. \\
+A first-degree equation involving x, y. and z-coordinates in the coordinate space represents a plane.
+
+\subsection{Distance and Spheres}
+
+Before discussing the notion of distance, just for an extra concept, we define what a distance, or metric is.
+
+\defn{Metric Space ~\cite{book:571187}}{ 
+    A set X, whose elements we shall call \textit{points}, is said to be a \textit{metric space} if with any two points p and q of X there is associated a real number d(p, q), called the \textit{distance} from p to q, such that
+    \begin{enumerate}
+        \item d(p, q)>0 if p $\neq$ q; d(p, p)=0;
+        \item d(p, q) = d(q, p)
+        \item d(p, q) $\leq$ d(p, r) + d(r, q), for any r $\in$ X.
+    \end{enumerate}
+
+    Any function with these three properties is called a \textit{distance function}, or a \textit{metric}.
+}
+
+The pair (X, d) is sometimes called a metric space, as well.
+
+From now on, without explicit notation, we think of $\mathbb{R}^n$ as the metric space associated by the standard L2 metric:
+
+$$d(p,q)=\sqrt{\sum_{i=1}^{n}(q_i-p_i)^2}$$
+
+Now, which equation represents a sphere?
+
+The equation d(P,(x,y,z))=r for any positive real r would represent the surface of the sphere centered at P with radius r. Given coordinates P($x_0, y_0, z_0$), the equation for the sphere is represented as such:
+
+$$(x-x_0)^2+(y-y_0)^2+(z-z_0)^2=r^2$$
+
+\section{Inner Product Space}
+
+The definition of vector is used in mathematics and sciences to indicate a quantity that has both magnitude and direction. For instance, to describe the velocity of a moving object, we must specify both the speed of the object and the direction of travel. Other examples of vectors include force, displacement, and acceleration.
+
+In this section, we discuss the general concept of vectors in terms of vector spaces, and the definition of inner products within it. If you already know the required concepts, or has no interest on seeing the exact definition on inner product space, you may skip to the next section.
+
+% \asum{The assumptions of  Black-Scholes model}{
+% \begin{enumerate}
+%     \item The stock price follows a geometric Brownian motion with constant drift and volatility.
+%     \item There are no arbitrage opportunities.
+%     \item The markets are frictionless, with no transaction costs or taxes.
+%     \item The risk-free interest rate is constant and known.
+%     \item The options can only be exercised at expiration (European options).
+% \end{enumerate}
+% }
+
+% \begin{equation}
+%     dS = \mu S dt + \sigma S dW
+% \end{equation}
+
+% where:
+% \begin{itemize}
+%     \item \( \mu \) is the drift rate of the stock.
+%     \item \( \sigma \) is the volatility of the stock.
+%     \item \( W \) is a Wiener process or Brownian motion.
+% \end{itemize}
+
+% \defn{Call and Put Options}{
+%     \begin{itemize}
+%         \item \textbf{Call Option:} Gives the holder the right (but not the obligation) to buy an asset at a predefined date and price (strike price).
+%         \item \textbf{Put Option:} Gives the holder the right (but not the obligation) to sell an asset at a predefined date and price (strike price).
+%     \end{itemize}
+% }
+
+% Under the black and scholes assumptions we the PDE of the price of an European Call :
+
+% \thmp{Black and Scholes PDE }{
+% \begin{equation}
+%     \frac{\partial C}{\partial t} + r S \frac{\partial C}{\partial S} + \frac{1}{2} \sigma^2 S^2 \frac{\partial^2 C}{\partial S^2} = r C
+% \end{equation}
+% }{
+% Using Ito's Lemma we get : 
+% \begin{equation}
+%     dC = \frac{\partial C}{\partial t} dt + \frac{\partial C}{\partial S} dS + \frac{1}{2} \frac{\partial^2 C}{\partial S^2} \sigma^2 S^2 dt
+% \end{equation}
+
+% Substituting \( dS \) into the equation, we get:
+
+% \begin{equation}
+%     dC = \left( \frac{\partial C}{\partial t} + \frac{\partial C}{\partial S} \mu S + \frac{1}{2} \frac{\partial^2 C}{\partial S^2} \sigma^2 S^2 \right) dt + \frac{\partial C}{\partial S} \sigma S dW
+% \end{equation}
+
+% This can be rearranged to:
+
+% \begin{equation}
+%     dC = \left( \frac{\partial C}{\partial t} + \frac{\partial C}{\partial S} \mu S + \frac{1}{2} \frac{\partial^2 C}{\partial S^2} \sigma^2 S^2 \right) dt + \frac{\partial C}{\partial S} \sigma S dW
+% \end{equation}
+
+% We form a risk-free portfolio by holding a position in the stock and an option. The change in the value of the portfolio is:
+
+% \begin{equation}
+%     \Pi = -C + \Delta S
+% \end{equation}
+
+% The change in the portfolio value is:
+
+% \begin{equation}
+%     d\Pi = -dC + \Delta dS
+% \end{equation}
+
+% Substituting \( dC \) and \( dS \), and choosing \( \Delta = \frac{\partial C}{\partial S} \), we get:
+
+% \begin{equation}
+%     d\Pi = -\left( \frac{\partial C}{\partial t} + \frac{1}{2} \frac{\partial^2 C}{\partial S^2} \sigma^2 S^2 \right) dt
+% \end{equation}
+
+% For the portfolio to be risk-free, \( d\Pi \) must earn the risk-free rate \( r \):
+
+% \begin{equation}
+%     -\left( \frac{\partial C}{\partial t} + \frac{1}{2} \frac{\partial^2 C}{\partial S^2} \sigma^2 S^2 \right) = r \left( -C + \frac{\partial C}{\partial S} S \right)
+% \end{equation}
+
+% Simplifying, we get the Black-Scholes partial differential equation:
+% \begin{equation*}
+%     \frac{\partial C}{\partial t} + r S \frac{\partial C}{\partial S} + \frac{1}{2} \sigma^2 S^2 \frac{\partial^2 C}{\partial S^2} = r C
+% \end{equation*}
+
+% }
+
+\subsection{The Dot Product}
+
+\defn{Dot Product} {
+For any \textbf{a}, \textbf{b} $\in \mathbb{R}^n$,
+
+$$\textbf{a}\cdot\textbf{b} = <\textbf{a},\textbf{b}> = \sum_{i=1}^{n}a_ib_i$$
+
+}
+
+\subsection{Direction Angles and Direction Cosines}
+
+\defn{Direction Angles}{
+The \textbf{direction angles} of a nonzero vector \textbf{a} are the angles $\alpha$, $\beta$, and $\gamma$ $\in [0, \pi]$ that \textbf{a} makes with the positive x-, y-, and z-axes, respectively.
+
+$$\frac{1}{|\textbf{a}|}\textbf{a} = ( \cos\alpha, \cos\beta, \cos\gamma )$$
+
+}
+
+\subsection{Projections}
+
+\defn{Projections}{
+    \begin{itemize}
+        \item Scalar projection of \textbf{b} onto \textbf{a} (component of b along a): $\text{comp}_\textbf{a}\textbf{b} = \frac{<\textbf{a},\textbf{b}>}{|\textbf{a}|}$
+        \item Vector projection of \textbf{b} onto \textbf{a}: $\text{proj}_\textbf{a}\textbf{b} = \frac{<\textbf{a},\textbf{b}>}{|\textbf{a}|^2}\textbf{a}$
+    \end{itemize}
+}
+
+\section{Products of Vectors}
+
+\subsection{Cross Product of Two Vectors}
+
+\defn{Cross Product}{
+For any $\textbf{a}=(a_1,a_2,a_3), \textbf{b}=(b_1,b_2,b_3) \in \mathbb{R}$, the cross product $\textbf{a}\times\textbf{b}$ is the vector:
+
+$$\textbf{a}\times\textbf{b} = (a_2b_3-a_3b_2, a_3b_1-a_1b_3, a_1b_2-a_2b_1)$$
+
+}
+
+\subsection{Properties of Cross Product}
+
+\thmp{}{
+The vector $\textbf{a}\times\textbf{b}$ is orthogonal to both \textbf{a} and \textbf{b}.
+}{
+It suffices to show that $\textbf{c} =^{let} \textbf{a}\times\textbf{b}$'s dot product with \textbf{a} and \textbf{b} both yield zero.
+
+\begin{align*}
+    \textbf{c}\cdot\textbf{a} &= a_1(a_2b_3-a_3b_2) + a_2(a_3b_1-a_1b_3) + a_3(a_1b_2-a_2b_1) \\
+    &= b_1(a_2a_3-a_3a_2) + b_2(-a_1a_3+a_3a_1) + b_3(a_1a_2-a_2a_1) = 0
+\end{align*}
+\begin{align*}
+    \textbf{c}\cdot\textbf{b} &= b_1(a_2b_3-a_3b_2) + b_2(a_3b_1-a_1b_3) + b_3(a_1b_2-a_2b_1) \\
+    &= a_1(-b_2b_3+b_3b_2) + a_2(b_1b_3-b_3b_1) + a_3(-b_1b_2+b_2b_1) = 0
+\end{align*}
+
+}
+
+\thmp{(Magnitude of the Cross Product)}{
+The length of the cross product of two vectors equals the product of the magnitudes of the two vectors and the sine of the angle $\theta (\in [0,\pi])$ between the two vectors:
+
+$$|\textbf{a}\times\textbf{b}| = |\textbf{a}||\textbf{b}|\sin\theta$$
+
+}{
+From the definitions of the cross product and length of a vector,
+
+\begin{align*}
+    |\textbf{a}\times\textbf{b}|^2 &= (a_2b_3-a_3b_2)^2+(a_3b_1-a_1b_3)^2+(a_1b_2-a_2b_1)^2 \\
+    &= (a_1^2+a_2^2+a_3^2)(b_1^2+b_2^2+b_3^2)-(a_1b_1+a_2b_2+a_3b_3)^2 \\
+    &= |\textbf{a}|^2|\textbf{b}|^2-(\textbf{a}\cdot\textbf{b})^2 \\
+    &= (|\textbf{a}||\textbf{b}|)^2(1-\cos^2\theta) \\
+    &= (|\textbf{a}||\textbf{b}|\sin\theta)^2
+\end{align*}
+
+Hence $|\textbf{a}\times\textbf{b}| = |\textbf{a}||\textbf{b}|\sin\theta$ for the angle $\theta (\in [0,\pi])$ between \textbf{a} and \textbf{b}.
+
+}
+
+\subsection{Triple Products}
+
+% To solve the Black-Scholes equation, we apply the boundary condition for a European call option:
+
+% \begin{equation}
+%     C(S, T) = \max(S_T - K, 0)
+% \end{equation}
+
+% where \( K \) is the strike price and \( T \) is the time to expiration.
+
+% Using the method of transforming variables, we obtain the solution for a call option:
+
+% \thmp{Black and Scholes formulas}{
+% The price of a call under black and scholes model is : 
+
+% \begin{equation}
+%     C(S, t) = S \Phi(d_1) - K e^{-r(T-t)} \Phi(d_2)
+% \end{equation}
+
+% where:
+% \begin{align}
+%     d_1 &= \frac{\ln\left(\frac{S}{K}\right) + \left(r + \frac{\sigma^2}{2}\right)(T-t)}{\sigma \sqrt{T-t}} \\
+%     d_2 &= d_1 - \sigma \sqrt{T-t}
+% \end{align}
+
+% and \( \Phi \) is the cumulative distribution function of the standard normal distribution.
+
+% }{
+% Left exercise for reader. 
+% }
+
+
+\section{Cylinders and Quadratic Surfaces}
+
+Similarly, for a European put option, the boundary condition is:
+
+\begin{equation}
+    P(S, T) = \max(K - S_T, 0)
+\end{equation}
+
+The solution for a put option is given by:
+
+\begin{equation}
+    P(S, t) = K e^{-r(T-t)} \Phi(-d_2) - S \Phi(-d_1)
+\end{equation}
+
+\section{Greeks in the Black-Scholes Model}
+
+The Greeks are sensitivities of the option price to various factors:
+
+\subsection{Delta}
+
+Delta measures the sensitivity of the option price to changes in the underlying asset price:
+
+\begin{equation}
+    \Delta_C = \frac{\partial C}{\partial S} = \Phi(d_1)
+\end{equation}
+
+\begin{equation}
+    \Delta_P = \frac{\partial P}{\partial S} = \Phi(d_1) - 1
+\end{equation}
+
+\subsection{Gamma}
+
+Gamma measures the sensitivity of delta to changes in the underlying asset price:
+
+\begin{equation}
+    \Gamma = \frac{\partial^2 C}{\partial S^2} = \frac{\Phi'(d_1)}{S \sigma \sqrt{T - t}}
+\end{equation}
+
+\subsection{Theta}
+
+Theta measures the sensitivity of the option price to the passage of time:
+
+\begin{equation}
+    \Theta_C = -\frac{S \Phi'(d_1) \sigma}{2 \sqrt{T - t}} - r K e^{-r(T - t)} \Phi(d_2)
+\end{equation}
+
+\begin{equation}
+    \Theta_P = -\frac{S \Phi'(d_1) \sigma}{2 \sqrt{T - t}} + r K e^{-r(T - t)} \Phi(-d_2)
+\end{equation}
+
+\subsection{Vega}
+
+Vega measures the sensitivity of the option price to changes in volatility:
+
+\begin{equation}
+    \nu = \frac{\partial C}{\partial \sigma} = \frac{\partial P}{\partial \sigma} = S \sqrt{T - t} \Phi'(d_1)
+\end{equation}
+
+\subsection{Rho}
+
+Rho measures the sensitivity of the option price to changes in the risk-free interest rate:
+
+\begin{equation}
+    \rho_C = K (T - t) e^{-r(T - t)} \Phi(d_2)
+\end{equation}
+
+\begin{equation}
+    \rho_P = -K (T - t) e^{-r(T - t)} \Phi(-d_2)
+\end{equation}
+
+
+\section{Numerical Examples}
+
+\exm{Call Option Pricing}{
+    Consider a European call option with \( S = 100 \), \( K = 100 \), \( r = 0.05 \), \( \sigma = 0.2 \), and \( T = 1 \) year. Using the Black-Scholes formula, we calculate the call option price.
+}
+
+
+\section{Conclusion}
+
+The Black-Scholes model is a fundamental tool in financial markets for pricing options. It provides insights into the behavior of option prices and the factors that affect them. Understanding the model and its derivations is crucial for anyone involved in finance.
+
+\end{document}
